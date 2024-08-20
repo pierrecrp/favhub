@@ -1,15 +1,13 @@
 class ListsController < ApplicationController
   
+  before_action :set_list, only: %i[show update]
+
   def index
     @lists = List.all
   end
 
-  def new 
-    @list = List.new
-  end
-
   def show
-    @list = List.find(params[:id])
+
   end
 
   def create
@@ -22,9 +20,19 @@ class ListsController < ApplicationController
     end
   end
 
+  def update
+    @list.update(pulic: params[:public])
+  end
+
   private
 
   def list_params
     params.require(:list).permit(:name, :public)
   end
+  
+  def set_list
+    @list = List.find(params[:id])
+  end
 end
+
+# redirect fall back

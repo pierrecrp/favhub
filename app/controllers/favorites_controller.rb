@@ -1,6 +1,5 @@
 class FavoritesController < ApplicationController
-  before_action :authenticate_user!
-  
+
   before_action :set_favorite, only: %i[show update]
 
   def index
