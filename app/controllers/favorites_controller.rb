@@ -1,5 +1,7 @@
 class FavoritesController < ApplicationController
-  before_action :set_favorite, only: %i[show]
+  before_action :authenticate_user!
+  
+  before_action :set_favorite, only: %i[show update]
 
   def index
     @favorites = Favorite.all
@@ -10,13 +12,12 @@ class FavoritesController < ApplicationController
   end
 
   def update
-    @list = List.new
     @favorite.update(list_id: params[:list_id])
   end
 
   private
 
   def set_favorite
-    @favorite = Favorite.find(params[:favorite_id])
+    @favorite = Favorite.find(params[:id])
   end
 end
