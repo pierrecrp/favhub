@@ -18,6 +18,6 @@ Rails.application.routes.draw do
     resources :favorites, only: [:update]
   end
 
-  resources :followers, [:create, :destroy]
+  resources :followers, only: [:create, :destroy]
   
 end
