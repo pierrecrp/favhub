@@ -1,0 +1,14 @@
+<h1>All your favorites</h1>
+
+<div class="row">
+  <% @favorites.each do |favorite| %>
+    <div class="card col-2" style="width: 18rem;">
+      <img class="card-img-top" src="..." alt="<%=  %>">
+      <div class="card-body">
+        <h5 class="card-title"><%= favorite.name %></h5>
+        <p class="card-text"><%= favorite.description %></p>
+        <a href="#" class="btn btn-primary">Link 1</a>
+      </div>
+    </div>
+  <% end %>
+</div>
