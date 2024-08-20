@@ -9,22 +9,44 @@
 #   end
 require "faker"
 
-List.all.destroy
+Tag.destroy_all
+Favorite.destroy_all
+List.destroy_all
+User.destroy_all
 
-Favorite.all.destroy
+user1 = User.create(user_name: "Allycious", first_name: "Halima", last_name: "Lamliji", email: "allycious.contact@gmail.com", password: "azerty")
+user2 = User.create(user_name: "pierrecrp", first_name: "Pierre", last_name: "Crepin", email: "pierrecrepin33200@gmail.com", password: "azerty")
+user3 = User.create(user_name: "Leo", first_name: "Léo", last_name: "Turcat", email: "turcatleo@gmail.com", password: "azerty")
 
-Follow.all.destroy
+list1 = List.create(name: "Ma wishlist", public: true, user: user1)
+list2 = List.create(name: "My son's wishes", public: false, user: user2)
+list3 = List.create(name: "Mami's giftlist", public: false, user: user3)
 
-Tag.all.destroy
-
-user = User.create(username: "", first_name: "", last_name: "", email: "", password: "")
-
-list = List.create(name: "", public: false, user: User.all.sample)
+sources = ["Vinted", "Le Bon Coin"]
 
 7.times do
-  favorite = Favorite.create(name: "", description: "", price: , size: "", url: "", user: list.user , list: list )
+  favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
+  price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user1, list: list1)
 
   2.times do
-  tag = Tag.create(name: "", favorite: favorite)
+    tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
+  end
+end
+
+7.times do
+  favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
+  price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list2)
+
+  2.times do
+  tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
+  end
+end
+
+7.times do
+  favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
+  price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list2)
+
+  2.times do
+  tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
   end
 end
