@@ -7,6 +7,7 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+require "faker"
 
 List.all.destroy
 
@@ -16,59 +17,14 @@ Follow.all.destroy
 
 Tag.all.destroy
 
+user = User.create(username: "", first_name: "", last_name: "", email: "", password: "")
 
-lists = [
-  { name: "Christmas list", public: false, user_id: }
-  { name: "Christmas list", public: false, user_id: }
-  { name: "Christmas list", public: false, user_id: }
-  { name: "Christmas list", public: false, user_id: }
-  { name: "Christmas list", public: false, user_id: }
-  { name: "Christmas list", public: false, user_id: }
-  { name: "Christmas list", public: false, user_id: }
-]
+list = List.create(name: "", public: false, user: User.all.sample)
 
-favorites = [
-  { name: "", description: "", price: , size: "", url: "", user_id:  ,list_id: }
-  { name: "", description: "", price: , size: "", url: "", user_id:  ,list_id: }
-  { name: "", description: "", price: , size: "", url: "", user_id:  ,list_id: }
-  { name: "", description: "", price: , size: "", url: "", user_id:  ,list_id: }
-  { name: "", description: "", price: , size: "", url: "", user_id:  ,list_id: }
-  { name: "", description: "", price: , size: "", url: "", user_id:  ,list_id: }
-  { name: "", description: "", price: , size: "", url: "", user_id:  ,list_id: }
-]
+7.times do
+  favorite = Favorite.create(name: "", description: "", price: , size: "", url: "", user: list.user , list: list )
 
-follows = [
-  { follower_id: , followed_id: }
-  { follower_id: , followed_id: }
-  { follower_id: , followed_id: }
-  { follower_id: , followed_id: }
-  { follower_id: , followed_id: }
-  { follower_id: , followed_id: }
-  { follower_id: , followed_id: }
-]
-
-tags = [
-  { name: "", favorite_id: }
-  { name: "", favorite_id: }
-  { name: "", favorite_id: }
-  { name: "", favorite_id: }
-  { name: "", favorite_id: }
-  { name: "", favorite_id: }
-  { name: "", favorite_id: }
-]
-
-lists.each do |list|
-  List.new(list)
-end
-
-favorites.each do |favorite|
-
-end
-
-follows.each do |follow|
-
-end
-
-tags.each do |tag|
-
+  2.times do
+  tag = Tag.create(name: "", favorite: favorite)
+  end
 end
