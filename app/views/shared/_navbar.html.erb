@@ -10,12 +10,32 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
+        <%= simple_form_for :search, url: root_path, method: :get do |f| %>
+          <div class="search-form-control form-group" id="search-form">
+            <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+            <button name="button" type="submit" class="btn btn-nav">
+              <i class="fas fa-search"></i> Search
+            </button>
+          </div>
+        <% end %>
         <%# if user_signed_in? %>
           <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fa-solid fa-table-columns icon-orange"></i>
+              Dashboard
+            <% end %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fa-regular fa-heart icon-orange"></i>
+              Favoris
+            <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+            <%= link_to "#", class: "nav-link" do %>
+              <i class="fa-solid fa-list icon-orange"></i>
+              Listes
+            <% end %>
           </li>
           <li class="nav-item dropdown">
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
