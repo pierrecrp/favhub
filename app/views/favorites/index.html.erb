@@ -5,12 +5,13 @@
 <div class="row">
 
 <div class="container col-8 border-end border-weight-2">
+<%= turbo_frame_tag :favorites_list do %>
 <div class="row m-3">
   <% @favorites.each do |favorite| %>
-    <div class="card-oui col-2 m-3 position-relative" style="width: 16rem;">
+    <div class="card card-oui col-2 m-3 position-relative" style="width: 16rem;">
       <img class="card-img" src="https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="<%= favorite.name %>">
       <div class="p-3 d-flex flex-column flex-grow-1">
-        <h5><%= favorite.name %></h5>
+        <h5 class="card-title"><%= favorite.name %></h5>
 
         <p class="flex-grow-1"><%= favorite.description %></p>
 
@@ -20,24 +21,33 @@
         </div>
       </div>
       <div class="position-absolute top-5 start-5 p-2">
-        <%= link_to lists_path, class: "btn btn-main" do %>
-        <i class="fa-solid fa-plus"></i>
+        <% if favorite.list_id.nil? %>
+          <%= link_to lists_path, class: "btn btn-main" do %>
+            <i class="fa-solid fa-plus"></i>
+          <% end %>
         <% end %>
       </div>
     </div>
   <% end %>
 </div>
+<% end %>
 </div>
 
 <div class="container col-4 p-3">
   <h2>My lists</h2>
+
+  <%= link_to favorites_path do %>
+      <div class="card card-oui py-2 px-4">
+        Favoris non listés
+      </div>
+    <% end %>
+
   <% @lists.each do |list| %>
-    <%= link_to list_path(list) do %>
-      <div class="card bg-white py-2 px-4 shadow rounded">
+    <%= link_to favorites_path(list_id: list.id) do %>
+      <div class="card card-oui py-2 px-4">
         <%= list.name %>
       </div>
     <% end %>
   <% end %>
 </div>
-
 </div>
