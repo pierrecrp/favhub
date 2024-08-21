@@ -1,10 +1,21 @@
+.card-img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.card {
+  padding: 0;
+}
+
 .card-body {
   border-radius: 20px;
   background-color: white;
 }
+
 .card-favorite {
   border-radius: 10px;
 }
+
 .card-oui {
   border-radius: 10px;
   background-color: rgba(246, 244, 244, 0.6);
