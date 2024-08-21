@@ -3,7 +3,8 @@ class FavoritesController < ApplicationController
   before_action :set_favorite, only: %i[show update]
 
   def index
-    @favorites = Favorite.all
+    @favorites = Favorite.where(user: current_user)
+    @lists = List.where(user: current_user)
   end
 
   def show
