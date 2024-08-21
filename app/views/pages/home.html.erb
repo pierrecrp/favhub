@@ -1,2 +1,15 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="d-flex justify-content-center align-items-center vh-100">
+  <div class="text-center mb-5">
+    <%= image_tag "logo-favhub.png", style:"height: 120px"%>
+    <div class="mt-5">
+        <%= link_to "#", class: "btn-main mx-2 px-3" do %>
+          <i class="fa-solid fa-download"></i>
+          Récupérer mes favoris
+        <% end %>
+        <%= link_to "#", class: "btn-secondary mx-2 px-3" do %>
+          Mon dashboard
+          <i class="fa-solid fa-arrow-right"></i>
+        <% end %>
+    </div>
+  
+</div>
