@@ -44,7 +44,7 @@ end
 
 7.times do
   favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
-  price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list2)
+  price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user3, list: list3)
 
   2.times do
   tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
