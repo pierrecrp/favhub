@@ -13,11 +13,11 @@ Tag.destroy_all
 Favorite.destroy_all
 List.destroy_all
 User.destroy_all
+Follow.destroy_all
 
-user1 = User.create(user_name: "Allycious", first_name: "Halima", last_name: "Lamliji", email: "allycious.contact@gmail.com", password: "azerty")
-user2 = User.create(user_name: "pierrecrp", first_name: "Pierre", last_name: "Crepin", email: "pierrecrepin33200@gmail.com", password: "azerty")
-user3 = User.create(user_name: "Leo", first_name: "Léo", last_name: "Turcat", email: "turcatleo@gmail.com", password: "azerty")
-
+user1 = User.create(user_name: "Allycious", first_name: "Halima", last_name: "Lamliji", email: "allycious.contact@gmail.com", password: "azerty", avatar: "https://www.festival-cinecomedies.com/wp-content/uploads/2022/09/Pinot-Simple-Flic-portrait-Jugnot.jpg")
+user2 = User.create(user_name: "pierrecrp", first_name: "Pierre", last_name: "Crepin", email: "pierrecrepin33200@gmail.com", password: "azerty", avatar: "https://cache.magicmaman.com/data/photo/w1000_ci/6w/lara-fabian1.jpg")
+user3 = User.create(user_name: "Leo", first_name: "Léo", last_name: "Turcat", email: "turcatleo@gmail.com", password: "azerty", avatar: "https://www.gala.fr/imgre/fit/~1~gal~2023~09~28~db6ef588-25cd-486f-8b0f-18e849519e0c.jpeg/3463x2616/quality/80/brad-pitt.jpeg")
 list1 = List.create(name: "Ma wishlist", public: true, user: user1)
 list2 = List.create(name: "My son's wishes", public: false, user: user2)
 list3 = List.create(name: "Mami's giftlist", public: false, user: user3)
@@ -50,3 +50,6 @@ end
   tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
   end
 end
+
+Follow.create(follower: user3, followed: user1)
+Follow.create(follower: user3, followed: user2)
