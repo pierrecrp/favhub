@@ -15,6 +15,14 @@ class FavoritesController < ApplicationController
   end
 
   def show
+    @favorite = Favorite.find(params[:id])
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.update("favorite_modal_frame", partial: "favorites/favorite_modal", locals: { favorite: @favorite })
+      end
+    end
   end
 
   def create
