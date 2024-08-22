@@ -5,13 +5,13 @@ class FavoritesController < ApplicationController
   def index
     @favorites = Favorite.where(user: current_user)
     @lists = List.where(user: current_user)
+    @list = List.new
 
     if params[:list_id].present?
       @favorites = @favorites.where(list_id: params[:list_id])
     else
       @favorites = @favorites.where(list_id: nil)
     end
-
   end
 
   def show
@@ -36,7 +36,12 @@ class FavoritesController < ApplicationController
   end
 
   def update
-    @favorite.update(list_id: params[:list_id])
+    if params[:add_list] == "true"
+      @favorite.update(list_id: params[:list].to_i)
+    else
+      @favorite.update(list_id: nil)
+    end
+    redirect_to favorites_path
   end
 
   private

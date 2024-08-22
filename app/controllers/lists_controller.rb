@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  
+
   before_action :set_list, only: %i[show update]
 
   def index
@@ -14,9 +14,9 @@ class ListsController < ApplicationController
     @list = List.new(list_params)
     @list.user = current_user
     if @list.save
-      redirect_to list_path(@list)
+      redirect_to favorites_path
     else
-      render :new, status: :unprocessable_entity
+      render "favorites", status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class ListsController < ApplicationController
   def list_params
     params.require(:list).permit(:name, :public)
   end
-  
+
   def set_list
     @list = List.find(params[:id])
   end

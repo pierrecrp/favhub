@@ -1,0 +1,11 @@
+
+
+<div class="dropdown">
+  <i class="fa-solid fa-plus btn btn-main dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"></i>
+
+  <ul class="dropdown-menu">
+  <% @lists.each do |list| %>
+    <li class="btn btn-main"><%= link_to list.name, favorite_path(id: favorite.id, add_list: true, list: list), data: { turbo_method: :patch }, class: 'dropdown-item'%></li>
+  <% end %>
+  </ul>
+</div>
