@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom">
   <div class="container-fluid pe-0">
       <div class="d-flex">
-          <%= link_to "#", class: "navbar-brand" do %>
+          <%= link_to root_path, class: "navbar-brand" do %>
             <%= image_tag "logo-favhub.png" %>
           <% end %>
           <div class="search-form-control form-group" id="search-form">
@@ -19,18 +19,17 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav align-items-center">
+          <li class="nav-item active">
+            <%= link_to dashboards_path, class: "nav-link text-dark" do %>
+              <i class="fa-solid fa-table-columns icon-orange"></i>
+              Dashboard
+            <% end %>
+          </li>
           <%# if user_signed_in? %>
-            </li>
             <li class="nav-item active">
-              <%= link_to "#", class: "nav-link text-dark" do %>
+              <%= link_to favorites_path, class: "nav-link text-dark" do %>
                 <i class="fa-regular fa-heart icon-orange"></i>
                 Favoris
-              <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "#", class: "nav-link" do %>
-                <i class="fa-solid fa-list icon-orange"></i>
-                Listes
               <% end %>
             </li>
             <li class="nav-item dropdown">
@@ -38,10 +37,6 @@
               <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <%= link_to "Action", "#", class: "dropdown-item" %>
                 <%= link_to "Another action", "#", class: "dropdown-item" %>
-                <%= link_to "#", class: "nav-link" do %>
-                  <i class="fa-solid fa-table-columns icon-orange"></i>
-                  Dashboard
-                <% end %>
                 <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
                 <%# link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
               </div>
