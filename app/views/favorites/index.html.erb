@@ -1,5 +1,5 @@
 <div class="border-bottom border-weight-2 mt-3 pb-2">
-  <h1 class="mb-3 text-center">All your favorites</h1>
+  <h1 class="mb-3 text-center">Gestionnaire de favoris</h1>
 </div>
 
 <div class="row">
@@ -34,17 +34,17 @@
 </div>
 
 <div class="container col-4 p-3">
-  <h2>My lists</h2>
+  <h2 class="mx-2 mb-3">Mes listes</h2>
 
   <%= link_to favorites_path do %>
-      <div class="card card-oui py-2 px-4">
+      <div class="card card-oui py-2 px-4 m-2">
         Favoris non listés
       </div>
     <% end %>
 
   <% @lists.each do |list| %>
     <%= link_to favorites_path(list_id: list.id) do %>
-      <div class="card card-oui py-2 px-4">
+      <div class="card card-oui py-2 px-4 m-2">
         <%= list.name %>
       </div>
     <% end %>
