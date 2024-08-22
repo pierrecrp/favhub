@@ -1,13 +1,14 @@
 import { Controller } from "@hotwired/stimulus";
+import { Modal } from "bootstrap"
 
 export default class extends Controller {
-  static targets = ["modal"]
+  static targets = ['modal']
 
   connect() {
-    this.modal = new window.bootstrap.Modal(this.modalTarget)
+    this.modal = new Modal(this.modalTarget)
   }
 
-  showModal(event) {
+  show(event) {
     this.modal.show()
   }
 }
