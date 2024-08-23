@@ -8,7 +8,7 @@
 
 <div class="row m-3" data-controller="dropdown-menu">
   <% @favorites.each do |favorite| %>
-    <div class="card card-oui col-2 m-3 position-relative" style="width: 16rem;">
+    <div class="card card-oui border-0 col-2 m-3 position-relative" style="width: 16rem;">
       <img class="card-img" src="https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="<%= favorite.name %>">
       <div class="p-3 d-flex flex-column flex-grow-1">
         <h5 class="card-title"><%= favorite.name %></h5>
@@ -35,16 +35,18 @@
 <div class="container col-4 p-3">
   <h2 class="mx-2 mb-3">Mes listes</h2>
 
-  <%= link_to favorites_path do %>
-      <div class="card card-oui py-2 px-4 m-2">
-        Favoris non listés
+ <%= link_to favorites_path do %>
+  <div class="card-oui border-0 py-2 px-4 m-2">
+    <div class="link-text">Favoris non listés
       </div>
-    <% end %>
+  </div>
+<% end %>
+
 
   <% @lists.each do |list| %>
     <%= link_to favorites_path(list_id: list.id) do %>
-      <div class="card card-oui py-2 px-4 m-2">
-        <%= list.name %>
+      <div class="card card-oui border-0 py-2 px-4 m-2">
+        <div class="link-text"><%= list.name %></div>
       </div>
     <% end %>
   <% end %>
