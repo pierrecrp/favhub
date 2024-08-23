@@ -12,8 +12,8 @@ require "faker"
 Tag.destroy_all
 Favorite.destroy_all
 List.destroy_all
-User.destroy_all
 Follow.destroy_all
+User.destroy_all
 
 user1 = User.create(user_name: "Allycious", first_name: "Halima", last_name: "Lamliji", email: "allycious.contact@gmail.com", password: "azerty", avatar: "https://www.festival-cinecomedies.com/wp-content/uploads/2022/09/Pinot-Simple-Flic-portrait-Jugnot.jpg")
 user2 = User.create(user_name: "pierrecrp", first_name: "Pierre", last_name: "Crepin", email: "pierrecrepin33200@gmail.com", password: "azerty", avatar: "https://cache.magicmaman.com/data/photo/w1000_ci/6w/lara-fabian1.jpg")
