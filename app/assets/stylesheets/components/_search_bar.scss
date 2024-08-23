@@ -1,23 +1,16 @@
-.search-form-control {
-  position: relative;
-}
 
-.search-form-control .btn-nav {
-  position: absolute;
-  top: 4px;
-  bottom: 4px;
-  right: 4px;
-}
 
 .search-form-control .form-control {
   height: 3rem;
   background-color: #F5F5F5;
-  border-radius: 33px;
+  border-radius: 10px;
 }
 
 .form-group:focus {
   outline: none;
-  border: 0px !important; 
+  border: 0px !important;
+  display: flex;
+  flex-direction: row;
 }
 
 #search_query {
@@ -30,4 +23,6 @@
 
 #search-form {
   margin-right: 5px;
+  display: flex;
+  flex-direction: row;
 }
