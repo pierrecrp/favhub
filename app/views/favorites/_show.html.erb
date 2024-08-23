@@ -1,0 +1,10 @@
+<h5 class="modal-title" id="favoriteModalLabel"><%= favorite.name %></h5>
+<div class="modal-body">
+  <p><%= favorite.description %></p>
+  <p><strong>Price:</strong> <%= number_to_currency(favorite.price, unit: "€") %></p>
+  <p><strong>Size:</strong> <%= favorite.size %></p>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  <%= link_to 'View more', favorite_path(favorite), class: 'btn btn-primary' %>
+</div>
