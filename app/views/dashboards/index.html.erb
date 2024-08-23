@@ -23,7 +23,18 @@
           <div class="row">
             <% @favorites.last(4).each do |favorite| %>
               <div class="col-md-6 mb-3">
-                <%= render 'favorites/favorite', favorite: favorite %>
+                <%= link_to favorite_path(favorite), class: "card-oui card border-0 shadow-sm square-card d-flex flex-column", data: { controller: "modal", action: "click->modal#show" } do %>
+                  <div class="card-favorite p-2">
+                    <h6 class="card-title fw-semibold"><%= favorite.name %></h6>
+                    <p class="card-text"><%= truncate(favorite.description, length: 60) %></p>
+                    <div class="mt-auto d-flex justify-content-between align-items-center">
+                      <p class="card-text">
+                        <strong>Price:</strong> <%= number_to_currency(favorite.price, unit: "€") %><br>
+                        <strong>Size:</strong> <%= favorite.size %>
+                      </p>
+                    </div>
+                  </div>
+                <% end %>
               </div>
             <% end %>
           </div>
@@ -37,7 +48,7 @@
       </div>
     </div>
 
-    <div class="col-md-4 mt-3">
+    <div class="col-md-4 mt-2">
       <h4 class="mb-2 fw-bold">Fil d'actualité</h4>
       <div class="card-fil-custom p-2">
         <% if @following_favorites.present? && @following_favorites.any? %>
@@ -62,38 +73,50 @@
     </div>
   </div>
 
- <div class="row mt-3">
-  <div class="col-12">
-    <div class="card border-0 shadow-none">
-      <div class="card-body p-2">
-        <h4 class="mb-2 fw-bold">Mes dernières listes</h4>
-        <% @lists.each do |list| %>
-          <div class="card border-0 shadow-none mt-2 p-2">
-            <div class="card-body">
-              <h6 class="link-text mb-2 fw-semibold">
-                <%= link_to list.name, list_path(list) %>
-              </h6>
-              <div class="d-flex flex-nowrap overflow-auto">
-                <% if list.favorites.any? %>
-                  <div class="d-flex flex-nowrap">
-                    <% list.favorites.each do |favorite| %>
-                      <div class="square-card-wrapper mx-2">
-                        <%= render 'favorites/favorite', favorite: favorite %>
-                      </div>
-                    <% end %>
-                  </div>
-                <% else %>
-                  <p>Aucun favori dans cette liste.</p>
-                <% end %>
+  <div class="row mt-3">
+    <div class="col-12">
+      <div class="card border-0 shadow-none">
+        <div class="card-body p-2">
+          <h4 class="mb-2 fw-bold">Mes dernières listes</h4>
+          <% @lists.each do |list| %>
+            <div class="card border-0 shadow-none mt-2 p-2">
+              <div class="card-body">
+                <h6 class="link-text mb-2 fw-semibold">
+                  <%= link_to list.name, favorites_path(list_id: list.id) %>
+                </h6>
+                <div class="d-flex flex-nowrap overflow-auto">
+                  <% if list.favorites.any? %>
+                    <div class="d-flex flex-nowrap">
+                      <% list.favorites.each do |favorite| %>
+                        <div class="square-card-wrapper mx-2">
+                          <%= link_to favorite_path(favorite), class: "card-oui card border-0 shadow-sm square-card d-flex flex-column", data: { controller: "modal", action: "click->modal#show" } do %>
+                            <div class="card-favorite p-2">
+                              <h6 class="card-title fw-semibold"><%= favorite.name %></h6>
+                              <p class="card-text"><%= truncate(favorite.description, length: 60) %></p>
+                              <div class="mt-auto d-flex justify-content-between align-items-center">
+                                <p class="card-text">
+                                  <strong>Price:</strong> <%= number_to_currency(favorite.price, unit: "€") %><br>
+                                  <strong>Size:</strong> <%= favorite.size %>
+                                </p>
+                              </div>
+                            </div>
+                          <% end %>
+                        </div>
+                      <% end %>
+                    </div>
+                  <% else %>
+                    <p>Aucun favori dans cette liste.</p>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
-        <div class="text-center mt-3">
-          <%= link_to favorites_path, class: 'text-decoration-none d-flex align-items-center' do %>
-            <i class="fa-solid fa-arrow-right link-icon me-2"></i>
-            <span class="link-text">Toutes mes listes</span>
           <% end %>
+          <div class="text-center mt-3">
+            <%= link_to favorites_path, class: 'text-decoration-none d-flex align-items-center' do %>
+              <i class="fa-solid fa-arrow-right link-icon me-2"></i>
+              <span class="link-text">Toutes mes listes</span>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
