@@ -1,7 +1,6 @@
-
-<div class="card-oui card border-0 square-card d-flex flex-column" data-controller="modal" data-action="click->modal#show">
-  <div class="card-favorite p-3">
-    <h6 class="card-title"><%= favorite.name %></h6>
+<div class="card-oui card border-0 shadow-sm square-card d-flex flex-column" data-controller="modal" data-action="click->modal#show">
+  <div class="card-favorite p-2">
+    <h6 class="card-title fw-semibold"><%= favorite.name %></h6>
     <p class="card-text"><%= truncate(favorite.description, length: 60) %></p>
     <div class="mt-auto d-flex justify-content-between align-items-center">
       <p class="card-text">
@@ -10,19 +9,19 @@
       </p>
     </div>
   </div>
-<div class="modal fade" id="favoriteModal" data-modal-target="modal" tabindex="-1" aria-labelledby="favoriteModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="favoriteModalLabel">Détails du favori</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+  <div class="modal fade" id="favoriteModal" data-modal-target="modal" tabindex="-1" aria-labelledby="favoriteModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold" id="favoriteModalLabel">Détails du favori</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
         <div class="modal-body">
-          <h5><%= favorite.name %></h5>
+          <h5 class="fw-semibold"><%= favorite.name %></h5>
           <p><%= favorite.description %></p>
           <%= link_to favorite_path(favorite), class: 'btn btn-main' %>
         </div>
+      </div>
     </div>
   </div>
-</div>
 </div>
