@@ -1,6 +1,6 @@
 class FavoritesController < ApplicationController
 
-  before_action :set_favorite, only: %i[show update]
+  before_action :set_favorite, only: %i[show update destroy]
 
   def index
     @favorites = Favorite.where(user: current_user)
@@ -43,6 +43,12 @@ class FavoritesController < ApplicationController
     end
     redirect_to favorites_path
   end
+
+  def destroy
+    @favorite.destroy
+    redirect_to dashboards_path, status: :see_other
+  end
+
 
   private
 

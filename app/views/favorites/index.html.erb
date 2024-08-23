@@ -15,7 +15,7 @@
         <p class="flex-grow-1"><%= favorite.description %></p>
         <div class="d-flex justify-content-between align-items-end">
           <p class="mb-0">Prix: <%= favorite.price %> €</p>
-          <%= link_to "Voir plus", favorites_path, class: "btn btn-main" %>
+          <%= link_to "Voir plus", favorite_path(favorite), class: "btn btn-main" %>
         </div>
       </div>
 
