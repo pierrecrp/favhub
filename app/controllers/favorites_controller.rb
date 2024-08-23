@@ -13,6 +13,10 @@ class FavoritesController < ApplicationController
     else
       @favorites = @favorites.where(list_id: nil)
     end
+
+    if params.dig(:search, :query).present?
+      @favorites = Favorite.search_favorites(params[:search][:query])
+    end
   end
 
   def show
