@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :dashboards, only: [:index]
 
-  resources :favorites, only: [:index, :show, :update]
+  resources :favorites, only: [:index, :show, :update, :destroy]
 
   resources :lists, only: [:index, :new, :create, :show] do
     resources :favorites, only: [:update]
