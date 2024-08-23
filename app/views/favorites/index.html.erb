@@ -11,28 +11,31 @@
     <% end %>
 </div>
 
-<div class="row m-3">
-  <% if @favorites.any? %>
-    <% @favorites.each do |favorite| %>
-      <div class="card card-oui border-0 col-2 m-3 position-relative" style="width: 16rem;">
-        <img class="card-img" src="https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="<%= favorite.name %>">
-        <div class="p-3 d-flex flex-column flex-grow-1">
-          <h5 class="card-title"><%= favorite.name %></h5>
-          <p class="flex-grow-1"><%= favorite.description %></p>
-          <div class="d-flex justify-content-between align-items-center">
-            <p class="mb-0" style="white-space: nowrap;">Prix: <%= favorite.price %> €</p>
-            <%= link_to "Voir plus", favorite_path(favorite), class: "btn btn-main ms-3" %>
+    <div class="row m-3">
+    <% if @favorites.any? %>
+      <% @favorites.each do |favorite| %>
+        <div class="card card-oui border-0 col-2 m-3 position-relative" style="width: 16rem;">
+          <img class="card-img" src="https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="<%= favorite.name %>">
+          <div class="p-3 d-flex flex-column flex-grow-1">
+            <h5 class="card-title"><%= favorite.name %></h5>
+            <p class="flex-grow-1"><%= truncate(favorite.description, length: 60) %></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <p class="mb-0" style="white-space: nowrap;">Prix: <%= favorite.price %> €</p>
+              <%= link_to "Voir plus", favorite_path(favorite), class: "btn btn-vp btn-sm ms-3" %>
+            </div>
           </div>
-        </div>
+
         <div class="position-absolute top-5 start-5 p-2">
           <% if favorite.list_id.nil? %>
             <%= render "menu", favorite: favorite %>
             <% else %>
-          <%= link_to "X", favorite_path(id: favorite.id, add_list: false, list: favorite.list_id), data: { turbo_method: :patch }, class: 'btn btn-main'%>
+            <%= link_to "X", favorite_path(id: favorite.id, add_list: false, list: favorite.list_id), data: { turbo_method: :patch }, class: 'btn btn-main'%>
           <% end %>
         </div>
-      </div>
+
+    </div>
     <% end %>
+
   <% else %>
     <p>Désolé, aucun favoris trouvés</p>
   <% end %>
@@ -52,7 +55,7 @@
 
   <% @lists.each do |list| %>
     <%= link_to favorites_path(list_id: list.id) do %>
-      <div class="card card-oui border-0 py-2 px-4 m-2">
+      <div class="card card-oui border-0 py-2 px-4 m-2 <%= 'active-link' if list == @selected_list %>">
         <div class="link-text"><%= list.name %></div>
       </div>
     <% end %>

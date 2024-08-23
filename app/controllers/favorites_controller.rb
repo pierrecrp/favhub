@@ -8,6 +8,7 @@ class FavoritesController < ApplicationController
     @list = List.new
 
     if params[:list_id].present?
+      @selected_list = List.find(params[:list_id])
       @favorites = @favorites.where(list_id: params[:list_id])
     else
       @favorites = @favorites.where(list_id: nil)
