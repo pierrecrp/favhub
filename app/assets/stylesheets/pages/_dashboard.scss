@@ -1,0 +1,143 @@
+.dashboard-background {
+  background-color: #F4F6F9;
+}
+
+.card-img-top {
+  height: 125px;
+  width: 100%;
+  object-fit: cover;
+  // overflow: hidden;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.favorite-card {
+  width: 10rem;
+  border-radius: 10px;
+  border: 0px;
+}
+
+.source-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.recent-favorites-container {
+  background-color: white;
+  border-radius: 10px ;
+  width: 450px;
+}
+
+.card-recent-favorites {
+  overflow: hidden;
+  height: 98px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  gap: 20px;
+}
+
+.card-recent-favorites img {
+  height: 80px;
+  width: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  
+}
+
+.main-container p {
+  font-size: 12px;
+}
+
+.main-container {
+  .btn {
+    font-size: 12px;
+  }
+}
+
+.profil-card {
+  background-color: white;
+  width: auto;
+  border-radius: 10px;
+}
+.social-container {
+  width: 470px;
+  border-radius: 10px;
+}
+
+.cards-activity {
+  height: 450px;
+  overflow: auto;
+}
+
+.profil-img {
+  display: inline-block;
+  border: 2px solid #EB4511;
+  border-radius: 50%;
+  padding: 5px;
+  
+
+}
+
+.profil-img img {
+  border-radius: 50%;
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+
+.feed-card {
+  background-color: white;
+}
+
+.profil-icons {
+  border-radius: 20px;
+  padding: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+
+.profil-icon {
+  color: #EB4511;
+  border-radius: 10px;
+  width: 30px;
+  height: 20px;
+}
+
+.profil-number {
+  font-size: 12px;
+  text-align: center;
+}
+
+.fa-solid{
+  font-size: 12px;
+}
+
+.feed-container {
+  background-color: white;
+  border-radius: 10px ;
+  width: auto;
+}
+
+.card-activity-infos p {
+  font-size: 15px;
+}
+
+.card-favorite-link {
+  text-decoration: none;
+  color: inherit;
+}
+  
+.card-favorite-link:hover {
+  text-decoration: none;
+  color: inherit; 
+}
+
+.card-favorite-link:visited {
+  color: inherit;
+}
+
+.avatar-feed {
+  border: 2px, solid, blue;
+}

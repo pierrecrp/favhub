@@ -21,6 +21,7 @@ user3 = User.create(user_name: "Leo", first_name: "Léo", last_name: "Turcat", e
 list1 = List.create(name: "Ma wishlist", public: true, user: user1)
 list2 = List.create(name: "My son's wishes", public: false, user: user2)
 list3 = List.create(name: "Mami's giftlist", public: false, user: user3)
+list4 = List.create(name: "Sneakers", public: false, user: user2)
 
 sources = ["Vinted", "Le Bon Coin"]
 
@@ -51,5 +52,17 @@ end
   end
 end
 
+  7.times do
+    favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
+    price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list4)
+
+    2.times do
+    tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
+    end
+  end
+
 Follow.create(follower: user3, followed: user1)
 Follow.create(follower: user3, followed: user2)
+
+Follow.create(follower: user2, followed: user1)
+Follow.create(follower: user2, followed: user3)
