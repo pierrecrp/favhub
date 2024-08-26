@@ -2,7 +2,7 @@
   object-fit: cover;
   width: 100%;
   height: 200px;
-  display: block; 
+  display: block;
 }
 
 .card-body {
@@ -11,7 +11,7 @@
 }
 
 .card-fil {
-  background-color: rgba(246, 244, 244, 0.6) !important;
+  background-color: rgba(246, 244, 245, 0.6) !important;
   border-radius: 10px !important;
 }
 
@@ -81,4 +81,8 @@
   border-radius: 10px !important;
   max-height: 500px;
   overflow-y: auto;
+}
+
+.card-oui:hover .link-text {
+  color: #EB4511 !important;
 }
