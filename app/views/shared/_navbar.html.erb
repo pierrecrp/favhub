@@ -1,50 +1,63 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom">
   <div class="container-fluid pe-0">
-      <div class="d-flex">
-          <%= link_to root_path, class: "navbar-brand" do %>
-            <%= image_tag "logo-favhub.png" %>
-          <% end %>
-      </div>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="d-flex">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "logo-favhub.png" %>
+      <% end %>
+    </div>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav align-items-center">
-          <li class="nav-item active">
-            <%= link_to dashboards_path, class: "nav-link text-dark" do %>
-              <i class="fa-solid fa-table-columns icon-orange"></i>
-              Dashboard
-            <% end %>
-          </li>
-            <li class="nav-item active">
-              <%= link_to favorites_path, class: "nav-link text-dark" do %>
-                <i class="fa-regular fa-heart icon-orange"></i>
-                Favoris
-              <% end %>
-            </li>
-            <li class="nav-item dropdown">
-                <% if user_signed_in? %>
-                  <%= image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <p class="ms-3"><strong><%= current_user.user_name %></strong></p>
-                  <%= link_to "Log out", destroy_user_session_path, class: "dropdown-item", data: {turbo_method: :delete} %>
-                </div>
-                <% else %>
-                <%= image_tag "https://img.freepik.com/photos-gratuite/mur-texture-gris_53876-88964.jpg?t=st=1724418079~exp=1724421679~hmac=2ec72a8aa6575f661bb203969f822050ee58b2667205730bdbc76479c770183e&w=740", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                  <%= link_to "Sign up", new_user_registration_path, class: "dropdown-item" %>
-                  <%= link_to "Log in", new_user_session_path, class: "dropdown-item" %>
-              </div>
-                <% end %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "#", class: "nav-link btn-vp mx-2 px-3" do %>
-                <i class="fa-brands fa-chrome"></i>
-                Télécharger l'extension
-              <% end %>
-            </li>
-        </ul>
-      </div>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item active">
+          <%= link_to dashboards_path, class: "nav-link text-dark" do %>
+            <i class="fa-solid fa-table-columns icon-orange"></i>
+            Dashboard
+          <% end %>
+        </li>
+
+        <li class="nav-item active">
+          <%= link_to favorites_path, class: "nav-link text-dark" do %>
+            <i class="fa-regular fa-heart icon-orange"></i>
+            Favoris
+          <% end %>
+        </li>
+
+        <li class="nav-item dropdown">
+          <% if user_signed_in? %>
+            <%= image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li class="ms-3 p-1"><strong><%= current_user.user_name %></strong></li>
+              <li><%= link_to "&nbsp;Déconnexion".html_safe, destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
+            </ul>
+          <% else %>
+            <div class="avatar-placeholder dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            </div>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><%= link_to "Créer un compte", new_user_registration_path, class: "dropdown-item" %></li>
+              <li><%= link_to "Connexion", new_user_session_path, class: "dropdown-item" %></li>
+            </ul>
+          <% end %>
+        </li>
+
+        <li class="nav-item">
+          <%= link_to "#", class: "nav-link btn-vp mx-2 px-3" do %>
+            <i class="fa-brands fa-chrome"></i>
+            Télécharger l'extension
+          <% end %>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
