@@ -2,7 +2,7 @@
   <button class="btn btn-main dropdown-toggle btn-sm" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
     <i class="fa-solid fa-plus"></i>
   </button>
-  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+  <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
     <% @lists.each do |list| %>
       <li>
         <%= link_to list.name, favorite_path(id: favorite.id, add_list: true, list: list), data: { turbo_method: :patch }, class: 'dropdown-item dropdown-item-with-border' %>
