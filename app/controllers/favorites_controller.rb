@@ -65,7 +65,7 @@ class FavoritesController < ApplicationController
   end
 
   def set_tags
-    @tags= @favorite.tags
+    @tags = Tag.where(user_id: :current_user_id)
   end
 
   def list_params

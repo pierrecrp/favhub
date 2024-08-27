@@ -9,10 +9,12 @@
     </div>
 
     <div class="card-body border ms-3 p-5 " style="width: 18rem;">
-      <div class="tags">
-        <% @tags.each do |tag| %>
-          <h6><%= tag.name %></h6>
-        <% end %>
+      <div class="tags d-flex gap-2">
+
+          <% @favorite.tags.each do |tag| %>
+            <h6><%= tag.name %></h6>
+          <% end %>
+        
       </div>
       <h5 class="card-show-title"><%= @favorite.name %></h5>
       <h6 class="card-subtitle mb-2"><%= @favorite.price %>€</h6>
