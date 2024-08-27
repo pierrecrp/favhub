@@ -12,7 +12,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for(@list) do |f| %>
+        <%= simple_form_for(@list, html: { data: { turbo: false } }) do |f| %>
         <%= f.input :name, :label => 'Nom', label_html: {class: "fs-20px"} %>
         <%= f.input :public, :label => 'Publique', input_html: { class: "toggle" } %>
       </div>
