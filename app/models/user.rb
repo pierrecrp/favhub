@@ -12,4 +12,8 @@ class User < ApplicationRecord
   def followeds_list
     followers.pluck(:followed_id)
   end
+
+  def public_lists
+    self.lists.where(public: true)
+  end
 end

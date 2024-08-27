@@ -21,6 +21,11 @@ Rails.application.routes.draw do
   end
 
   resources :followers, only: [:create, :destroy]
+
   resources :tags, only: [:create]
+  
+  resources :users, only: [:show] do
+    resources :follows, only: [:create, :destroy]
+  end
 
 end

@@ -28,8 +28,10 @@
   font-size: 15px;
   text-decoration: none;
   background-color: #EB4511;
+  border: 1px solid #EB4511;
   padding: 8px 24px;
   border-radius: 10px;
+  border: 1px solid #EB4511;
   transition: 0.5s ease;
 }
 
@@ -88,16 +90,18 @@
   text-decoration: none;
   background-color: #EB4511;
   border: 1px solid #EB4511;
+  padding: 4px 12px;
   border-radius: 10px;
   transition: 0.5s ease;
 }
 .btn-vp:hover {
-  color: #ffffff;
+  color: $fhub-color;
   font-weight: stronger;
   font-size: 15px;
   text-decoration: none;
-  background-color: #EB4511;
+  background-color: white;
   border: 1px solid #EB4511;
+  padding: 4px 12px;
   border-radius: 10px;
   transition: 0.5s ease;
 }
@@ -121,4 +125,13 @@
   font-size: 15px;
   text-decoration: none;
   transition: 0.5s ease;
+}
+
+.modal-body .btn.btn-secondary.share-btn {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10%;
 }

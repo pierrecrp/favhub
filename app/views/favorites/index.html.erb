@@ -21,7 +21,7 @@
             <p class="flex-grow-1"><%= truncate(favorite.description, length: 60) %></p>
             <div class="d-flex justify-content-between align-items-center">
               <p class="mb-0" style="white-space: nowrap;">Prix: <%= favorite.price %> €</p>
-              <%= link_to "Voir plus", favorite_path(favorite), class: "btn btn-vp btn-sm ms-3" %>
+              <%= link_to "Voir plus", favorite_path(favorite), class: "btn btn-vp" %>
             </div>
           </div>
 

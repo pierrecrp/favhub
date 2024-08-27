@@ -52,6 +52,12 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
 gem "faker"
 gem "pg_search"
+gem 'nokogiri'
+gem 'mechanize'
+gem 'selenium-webdriver', '~> 4.23'
+gem 'webdrivers'
+gem "cloudinary"
+gem "httparty"
 
 group :development, :test do
   gem "dotenv-rails"
@@ -75,5 +81,4 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
 end
