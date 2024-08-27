@@ -13,7 +13,8 @@
       </div>
       <div class="modal-body">
         <%= simple_form_for(@list) do |f| %>
-        <%= f.input :name, label_html: {class: "fs-20px"} %>
+        <%= f.input :name, :label => 'Nom', label_html: {class: "fs-20px"} %>
+        <%= f.input :public, :label => 'Publique', input_html: { class: "toggle" } %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" data-bs-dismiss="modal">Fermer</button>

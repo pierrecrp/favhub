@@ -25,7 +25,7 @@ list4 = List.create(name: "Sneakers", public: false, user: user2)
 
 sources = ["Vinted", "Le Bon Coin"]
 
-7.times do
+20.times do
   favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
   price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user1, list: list1)
 
