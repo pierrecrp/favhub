@@ -34,5 +34,3 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
   end
 end
-
-# redirect fall back
