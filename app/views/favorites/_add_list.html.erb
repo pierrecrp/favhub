@@ -1,10 +1,10 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-vp py-2 px-4 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal" data-turbo="false">
+<button type="button" class="btn btn-vp py-2 px-4 m-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Créer une nouvelle liste
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-turbo="false">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -12,8 +12,8 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for(@list) do |f| %>
-        <%= f.input :name, label_html: {class: "fs-20px"} %>
+        <%= simple_form_for(@list, html: { data: { turbo: false } }) do |f| %>
+          <%= f.input :name, label_html: { class: "fs-20px" } %>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-main" data-bs-dismiss="modal">Fermer</button>
