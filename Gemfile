@@ -57,6 +57,7 @@ gem 'mechanize'
 gem 'selenium-webdriver', '~> 4.23'
 gem 'webdrivers'
 gem "cloudinary"
+gem "httparty"
 
 group :development, :test do
   gem "dotenv-rails"
