@@ -1,6 +1,7 @@
 class FavoritesController < ApplicationController
 
   before_action :set_favorite, only: %i[show update destroy]
+  before_action :set_tags, only: %i[index show]
 
   def index
     @favorites = Favorite.where(user: current_user)
@@ -21,13 +22,15 @@ class FavoritesController < ApplicationController
 
   def show
     @favorite = Favorite.find(params[:id])
+    @favorite_tag = FavoriteTag.new
+    @tag = Tag.new
 
-    respond_to do |format|
-      format.html
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.update("favorite_modal_frame", partial: "favorites/favorite_modal", locals: { favorite: @favorite })
-      end
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.turbo_stream do
+    #     render turbo_stream: turbo_stream.update("favorite_modal_frame", partial: "favorites/favorite_modal", locals: { favorite: @favorite })
+    #   end
+    # end
   end
 
   def create
@@ -59,6 +62,10 @@ class FavoritesController < ApplicationController
 
   def set_favorite
     @favorite = Favorite.find(params[:id])
+  end
+
+  def set_tags
+    @tags= @favorite.tags
   end
 
   def list_params
