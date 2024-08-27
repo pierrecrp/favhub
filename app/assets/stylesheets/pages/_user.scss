@@ -1,0 +1,38 @@
+.user-img {
+  display: inline-block;
+  border: 2px solid $fhub-color;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.user-img img {
+  border-radius: 50%;
+  display: block;
+  width: 150px;
+  height: 150px;
+}
+
+.user-container {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.user-icons {
+  border-radius: 20px;
+  padding: 5px 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.user-favorite-card {
+  width: 200px;
+  border-radius: 10px;
+  border: 0px;
+}
+
+.user-favorites-container {
+  width: 100%;
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  white-space: nowrap;
+}

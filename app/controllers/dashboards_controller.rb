@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
 
   def index
+    @user = current_user
     @favorites = current_user.favorites
     @lists = current_user.lists.includes(:favorites)
     # Récupérer les derniers favoris créés par les users qui sont des followers du current_user

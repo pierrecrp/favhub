@@ -38,7 +38,7 @@
           <% if user_signed_in? %>
             <%= image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <li class="ms-3 p-1"><strong><%= current_user.user_name %></strong></li>
+              <li><%= link_to current_user.user_name, user_path(current_user), class: "dropdown-item ps-4" %></li>
               <li><%= link_to "&nbsp;Déconnexion".html_safe, destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
             </ul>
           <% else %>
