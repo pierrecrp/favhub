@@ -27,6 +27,8 @@
   background-color: white;
   border-radius: 10px ;
   width: 450px;
+  height: 670px;
+  overflow: auto;
 }
 
 .card-recent-favorites {
@@ -137,4 +139,22 @@
 
 .avatar-feed {
   border: 2px, solid, blue;
+}
+
+.favorite-card .btn {
+  margin-left: 0;
+  display: block;
+  text-align: left;
+}
+
+.favorite-card .card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.favorite-card .card-body .btn {
+  align-self: flex-start;
+}
+.tags-form-container .col-form-label.pt-0 {
+  display: none;
 }
