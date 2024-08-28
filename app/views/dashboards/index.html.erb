@@ -66,7 +66,7 @@
             <div class="profil-infos-text d-flex flex-column ps-2">
               <h5>Bonjour, <%= current_user.first_name %></h5>
               <p><%= current_user.email %></p>
-              <%= link_to "#", class: "btn btn-secondary mt-1", data: { bs_toggle: "modal", bs_target: "#shareProfileModal" } do %>
+              <%= link_to "#", class: "btn btn-secondary", data: { bs_toggle: "modal", bs_target: "#shareProfileModal" } do %>
                 <i class="fa-solid fa-share me-1"></i> Partager mon profil
               <% end %>
             </div>
