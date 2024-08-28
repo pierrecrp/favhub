@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :dashboards, only: [:index]
 
   resources :favorites, only: [:index, :show, :update, :destroy] do
-    resources :favorite_tags, only: [:create]
+    resources :favorite_tags, only: [:create, :destroy]
   end
 
   resources :lists, only: [:index, :new, :create, :show] do
