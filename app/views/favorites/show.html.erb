@@ -32,7 +32,7 @@
           <% if current_user.tags.present? %>
             <div class="tags-form-container d-flex align-items-center mb-2 mt-2">
               <%= f.input :tag, as: :check_boxes, collection: Tag.where.not(id: current_user.tags.joins(:favorite_tags)), input_html: { class: "tags-form" },  item_wrapper_class: 'tags-form-container', allow_blank: false %>
-               <%= render 'add_tag' %>
+               <%= render 'add_tag', tag: @tag %>
             </div>
             <% end %>
           <% end %>

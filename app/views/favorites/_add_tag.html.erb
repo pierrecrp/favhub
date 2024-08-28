@@ -12,9 +12,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @tag do |f| %>
+        <%= simple_form_for tag do |f| %>
           <%= f.input :name, label_html: {class: "fs-20px"} %>
-        <%= f.submit "Créer un tag", class: "d-block mx-auto btn btn-main" %>
+          <%= f.submit "Créer un tag", class: "d-block mx-auto btn btn-main" %>
         <% end %>
       </div>
     </div>

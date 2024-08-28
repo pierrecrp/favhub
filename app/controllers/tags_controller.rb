@@ -1,8 +1,11 @@
 class TagsController < ApplicationController
+  protect_from_forgery with: :null_session
+
 
   def create
     @tag = Tag.new(tag_params)
     @tag.user = current_user
+    raise
     if @tag.save
       redirect_back fallback_location: request.referer
     else
