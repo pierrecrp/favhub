@@ -3,33 +3,34 @@
 <div class="main-container d-flex p-3">
 
   <div class="lists-container d-flex flex-column m-4">
-    <% @lists.last(2).each do |list| %>
-      <div class="lists">
-        <div class="list-header d-flex justify-content-between align-items-center">
-          <h4><%= list.name %></h4>
-          <%= link_to favorites_path(list_id: list.id), class: "btn-text-only" do %>
-            Voir la liste
-            <i class="fa-solid fa-arrow-right"></i>
-          <% end %>
-        </div>
-        <div class="favorites-card d-flex gap-3 my-3">
-          <% list.favorites.last(3).each do |favorite| %>
-            <div class="card favorite-card">
-              <img class="card-img-top" src="https://images1.vinted.net/t/03_01564_TXYRanSYDWD51tfGuBtZAb3g/f800/1724432311.jpeg?s=d3f0e914256f111bc1df96f47aa04c2ffdd36fc2" alt="">
-              <div class="card-body">
-                <div class="card-body-main d-flex justify-content-between">
-                  <h6 class="card-title"><%= truncate(favorite.name, length: 25) %></h6>
-                  <img class="source-logo" src="https://cdn.brandfetch.io/idFLvfRPd0/w/800/h/800/theme/dark/icon.jpeg?k=id64Mup7ac&t=1721841761912?t=1721841761912" alt="source-logo">
-                </div>
-                <p class="card-text"><%= number_to_currency(favorite.price, unit: "€") %></p>
-                <%= link_to "Voir le favori", favorite_path(favorite), class: "btn btn-secondary py-1 px-3 me-3" %>
-              </div>
-            </div>
-          <% end %>
-        </div>
+  <% @lists.last(2).each do |list| %>
+    <div class="lists">
+      <div class="list-header d-flex justify-content-between align-items-center mt-2">
+        <h4><%= list.name %></h4>
+        <%= link_to favorites_path(list_id: list.id), class: "btn-text-only" do %>
+          Voir la liste
+          <i class="fa-solid fa-arrow-right"></i>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+      <div class="favorites-card d-flex gap-3 my-3">
+        <% list.favorites.last(3).each do |favorite| %>
+          <div class="card favorite-card">
+            <img class="card-img-top" src="https://images1.vinted.net/t/03_01564_TXYRanSYDWD51tfGuBtZAb3g/f800/1724432311.jpeg?s=d3f0e914256f111bc1df96f47aa04c2ffdd36fc2" alt="">
+            <div class="card-body">
+              <div class="card-body-main d-flex justify-content-between">
+                <h6 class="card-title"><%= truncate(favorite.name, length: 25) %></h6>
+                <img class="source-logo" src="https://cdn.brandfetch.io/idFLvfRPd0/w/800/h/800/theme/dark/icon.jpeg?k=id64Mup7ac&t=1721841761912?t=1721841761912" alt="source-logo">
+              </div>
+              <p class="card-text"><%= number_to_currency(favorite.price, unit: "€") %></p>
+              <%= link_to "Voir le favori", favorite_path(favorite), class: "btn btn-secondary py-1 px-3 me-3" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
 
   <div class="recent-favorites-container m-3 p-3">
     <div class="favorites-header d-flex justify-content-between align-items-center m-3">
@@ -65,7 +66,9 @@
             <div class="profil-infos-text d-flex flex-column ps-2">
               <h5>Bonjour, <%= current_user.first_name %></h5>
               <p><%= current_user.email %></p>
-              <%= link_to "Partager mon profil", "#", class: "btn btn-secondary mt-1", data: { bs_toggle: "modal", bs_target: "#shareProfileModal" } %>
+              <%= link_to "#", class: "btn btn-secondary mt-1", data: { bs_toggle: "modal", bs_target: "#shareProfileModal" } do %>
+                <i class="fa-solid fa-share me-1"></i> Partager mon profil
+              <% end %>
             </div>
           </div>
         </div>
@@ -75,21 +78,21 @@
             <div class="profil-icon d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-user-group"></i>
             </div>
-            <div class="profil-number"><%= @user.followeds.count %></div>
+            <div class="profil-number me-2"><%= @user.followeds.count %></div>
 
           </div>
           <div class="profil-icons d-flex align-items-center justify-content-between">
             <div class="profil-icon d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-star"></i>
             </div>
-            <div class="profil-number"><%= @user.favorites.count %></div>
+            <div class="profil-number me-2"><%= @user.favorites.count %></div>
 
           </div>
           <div class="profil-icons d-flex align-items-center justify-content-between">
             <div class="profil-icon d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-list-ul"></i>
             </div>
-            <div class="profil-number"><%= @user.lists.count %></div>
+            <div class="profil-number me-2"><%= @user.lists.count %></div>
           </div>
         </div>
       </div>
