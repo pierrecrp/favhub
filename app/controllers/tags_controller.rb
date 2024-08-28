@@ -5,7 +5,6 @@ class TagsController < ApplicationController
   def create
     @tag = Tag.new(tag_params)
     @tag.user = current_user
-    raise
     if @tag.save
       redirect_back fallback_location: request.referer
     else
