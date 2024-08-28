@@ -21,9 +21,11 @@ class FavoritesController < ApplicationController
   end
 
   def show
+    # debugger
     @favorite = Favorite.find(params[:id])
     @favorite_tag = FavoriteTag.new
     @tag = Tag.new
+    # debugger
 
     # respond_to do |format|
     #   format.html

@@ -30,12 +30,12 @@
         <div data-controller="submit-on-click"class="border-top mt-3">
           <%= simple_form_for [@favorite, @favorite_tag], html: { data: { controller: "submit-on-click", action: "change->submit-on-click#submitForm", "submit-on-click-target": "form" } } do |f| %>
           <% if current_user.tags.present? %>
-            <div class="tags-form-container d-flex align-items-center mb-2 mt-2">
+            <div class="tags-form-container d-flex align-items-center mt-2">
               <%= f.input :tag, as: :check_boxes, collection: Tag.where.not(id: current_user.tags.joins(:favorite_tags)), input_html: { class: "tags-form" },  item_wrapper_class: 'tags-form-container', allow_blank: false %>
-               <%= render 'add_tag' %>
             </div>
             <% end %>
           <% end %>
+        <%= render 'add_tag', tag: @tag %>
 
         </div>
        

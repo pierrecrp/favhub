@@ -1,4 +1,5 @@
 class FavoriteTagsController < ApplicationController
+  protect_from_forgery with: :null_session
 
   before_action :set_favorite_tag, only: %i[destroy]
   before_action :set_favorite, only: %i[create destroy]

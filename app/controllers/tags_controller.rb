@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  protect_from_forgery with: :null_session
+
 
   def create
     @tag = Tag.new(tag_params)
