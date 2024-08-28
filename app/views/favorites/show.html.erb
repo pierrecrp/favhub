@@ -8,12 +8,17 @@
       <img src="https://img.leboncoin.fr/api/v1/lbcpb1/images/10/46/78/1046780881464e64b133d0a7248fbf02df1586c1.jpg?rule=ad-large" alt="" class="image-favoris-show">
     </div>
 
-    <div class="card-body border ms-3 p-5 " style="width: 18rem;">
-      <div class="tags d-flex gap-2">
-
-          <% @favorite.tags.each do |tag| %>
-            <h6><%= tag.name %></h6>
-          <% end %>
+    <div class="card-body border ms-3 px-5 pt-5 pb-1" style="width: 18rem;">
+      <div class=".favorite-tags-container d-flex gap-2 mb-2">
+          <% if @favorite.user == current_user %>
+            <% @favorite.favorite_tags.each do |favorite_tag| %>
+                <%= link_to favorite_favorite_tag_path(@favorite, favorite_tag), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "favorite-tags d-flex align-items-center gap-1" do %>
+                <%= favorite_tag.tag.name %>
+                <i class="fa-solid fa-xmark"></i>
+                <% end %>
+              <% end %>
+            <% end %>
+          
         
       </div>
       <h5 class="card-show-title"><%= @favorite.name %></h5>
@@ -24,19 +29,18 @@
       </div>
       
       
-        <div class="border-top mt-3">
-          <%= simple_form_for [@favorite, @favorite_tag] do |f| %>
+        <div data-controller="submit-on-click"class="border-top mt-3">
+          <%= simple_form_for [@favorite, @favorite_tag], html: { data: { controller: "submit-on-click", action: "change->submit-on-click#submitForm", "submit-on-click-target": "form" } } do |f| %>
           <% if current_user.tags.present? %>
-            <div class="tags-form-container d-flex mb-2 mt-2">
-              <%= f.input :tag, as: :check_boxes, collection: current_user.tags, input_html: { class: "tags-form" },  item_wrapper_class: 'tags-form-container', allow_blank: false %>
-              <%= f.submit 'Submit' %>
+            <div class="tags-form-container d-flex align-items-center mb-2 mt-2">
+              <%= f.input :tag, as: :check_boxes, collection: Tag.where.not(id: current_user.tags.joins(:favorite_tags)), input_html: { class: "tags-form" },  item_wrapper_class: 'tags-form-container', allow_blank: false %>
+               <%= render 'add_tag' %>
             </div>
+            <% end %>
           <% end %>
-        <% end %>
-        
+
         </div>
-        <%= render 'add_tag' %>
+       
     </div>
   </div>
 </div>
-
