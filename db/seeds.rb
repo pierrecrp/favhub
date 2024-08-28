@@ -11,6 +11,7 @@ require "faker"
 
 Tag.destroy_all
 Favorite.destroy_all
+FavoriteTag.destroy_all
 List.destroy_all
 Follow.destroy_all
 User.destroy_all
@@ -29,36 +30,24 @@ sources = ["Vinted", "Le Bon Coin"]
   favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
   price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user1, list: list1)
 
-  2.times do
-    tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
-  end
+
 end
 
 7.times do
   favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
   price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list2)
 
-  2.times do
-  tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
-  end
 end
 
 7.times do
   favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
   price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user3, list: list3)
 
-  2.times do
-  tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
-  end
 end
 
   7.times do
     favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
     price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list4)
-
-    2.times do
-    tag = Tag.create(name: Faker::Commerce.brand, favorite: favorite)
-    end
   end
 
 Follow.create(follower: user3, followed: user1)
