@@ -30,9 +30,9 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      get 'sign_in', to: "users#sign_in"
+      post 'login', to: "sessions#create"
+
+      resources :favorites, only: [:create]
     end
   end
-
-  "api/v1/sign_in"
 end
