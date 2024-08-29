@@ -18,8 +18,17 @@ Rails.application.routes.draw do
     resources :favorites, only: [:update]
   end
 
+  resources :lists, only: [:update]
+
   resources :users, only: [:show] do
     resources :follows, only: [:create, :destroy]
   end
 
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      get 'sign_in', to: "users#sign_in"
+    end
+  end
+
+  "api/v1/sign_in"
 end

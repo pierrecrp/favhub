@@ -21,7 +21,8 @@ class ListsController < ApplicationController
   end
 
   def update
-    @list.update(pulic: params[:public])
+    @list.update(list_params)
+    redirect_to favorites_path
   end
 
   private
