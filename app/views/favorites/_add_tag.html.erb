@@ -1,0 +1,22 @@
+<!-- Bouton pour ouvrir le modal -->
+<button type="button" class="new-tag-btn" data-bs-toggle="modal" data-bs-target="#tagModal">
+  <i class="fa-solid fa-plus"></i> Créer un tag
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="tagModal" tabindex="-1" aria-labelledby="tagModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tagModalLabel">Ajouter un tag</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for tag do |f| %>
+          <%= f.input :name, label_html: {class: "fs-20px"} %>
+          <%= f.submit "Créer un tag", class: "d-block mx-auto btn btn-main" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

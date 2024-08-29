@@ -1,7 +1,8 @@
 class Favorite < ApplicationRecord
   belongs_to :user
   belongs_to :list, optional: true
-  has_many :tags, dependent: :destroy
+  has_many :favorite_tags, dependent: :destroy
+  has_many :tags, through: :favorite_tags
   has_many_attached :photos
 
   include PgSearch::Model

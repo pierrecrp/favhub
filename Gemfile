@@ -58,6 +58,7 @@ gem 'selenium-webdriver', '~> 4.23'
 gem 'webdrivers'
 gem "cloudinary"
 gem 'simple_token_authentication', '~> 1.0' # see semver.org
+gem "httparty"
 
 group :development, :test do
   gem "dotenv-rails"

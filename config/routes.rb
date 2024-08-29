@@ -12,13 +12,17 @@ Rails.application.routes.draw do
 
   resources :dashboards, only: [:index]
 
-  resources :favorites, only: [:index, :show, :update, :destroy]
+  resources :favorites, only: [:index, :show, :update, :destroy] do
+    resources :favorite_tags, only: [:create, :destroy]
+  end
 
-  resources :lists, only: [:index, :new, :create, :show] do
+  resources :lists, only: [:index, :new, :create, :show, :update] do
     resources :favorites, only: [:update]
   end
 
-  resources :lists, only: [:update]
+  resources :followers, only: [:create, :destroy]
+
+  resources :tags, only: [:create]
 
   resources :users, only: [:show] do
     resources :follows, only: [:create, :destroy]
