@@ -15,7 +15,7 @@
       <div class="favorites-card d-flex gap-3 my-3">
         <% list.favorites.last(3).each do |favorite| %>
           <div class="card favorite-card">
-            <img class="card-img-top" src="https://www.befunky.com/images/wp/wp-2018-06-replace-color-red-shoe-before-scaled-e1651175374654.jpeg?auto=avif,webp&format=jpg&width=944" alt="">
+             <%= cl_image_tag favorite.photos.first.key, class: 'card-img-top' %>
             <div class="card-body">
               <div class="card-body-main d-flex justify-content-between">
                 <h6 class="card-title"><%= truncate(favorite.name, length: 25) %></h6>
@@ -44,7 +44,11 @@
       <% @favorites.last(6).each do |favorite| %>
         <%= link_to favorite_path(favorite), class: "card-favorite-link" do %>
           <div class="card-recent-favorites d-flex align-items-center p-2 me-2">
-            <img src="https://img.freepik.com/photos-gratuite/image-maquette-bouteille-produit-beaute-photo-gratuite-arriere-plan_1340-31281.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1723680000&semt=ais_hybrid" />
+            <% if favorite.photos.attached? %>
+              <%= cl_image_tag favorite.photos.first.key %>
+            <% else %>
+              <%= image_tag "logo-favhub" %>
+            <% end %>
             <div class="card-favorites-recent-infos">
               <h6><%= truncate(favorite.name, length: 25) %></h6>
               <p><%= number_to_currency(favorite.price, unit: "€") %></p>

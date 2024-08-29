@@ -58,12 +58,13 @@ class Scrapper
     image_urls = document.css("._1cnjm").map do |img|
       img['src']
     end
+
     unique_image_urls = image_urls.uniq
 
     @favorite.name = title
     @favorite.description = description
     @favorite.price = price.to_i
-    image_urls.each do |image|
+    unique_image_urls.each do |image|
       file = URI.open(image)
       @favorite.photos.attach(io: file, filename: @favorite.name, content_type: 'images/png')
     end

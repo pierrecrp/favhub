@@ -9,6 +9,8 @@ class Api::V1::FavoritesController < ApplicationController
       url = favorite[:url]
       @favorite = Favorite.find_or_initialize_by(name: name, source: source, url: url, user: current_user)
       @favorite.save
+      scrapper = Scrapper.new(@favorite)
+      scrapper.call
     end
 
     render json: { status: "created" }

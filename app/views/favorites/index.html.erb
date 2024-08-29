@@ -15,7 +15,11 @@
     <% if @favorites.any? %>
       <% @favorites.each do |favorite| %>
         <div class="card card-oui border-0 col-2 m-3 position-relative" style="width: 16rem;">
-          <img class="card-img" src="https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="<%= favorite.name %>">
+          <% if favorite.photos.attached? %>
+            <%= cl_image_tag favorite&.photos&.first.key, class: 'card-img' %>
+          <% else %>
+            <%= image_tag "https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" %>
+          <% end %>
           <div class="p-3 d-flex flex-column flex-grow-1">
             <h5 class="card-title"><%= favorite.name %></h5>
             <p class="flex-grow-1"><%= truncate(favorite.description, length: 60) %></p>
@@ -62,7 +66,7 @@
   <% end %>
 
   <div>
-  <%= render 'add_list' %>
+  <%= render 'add_list', list: @list %>
   </div>
 
 

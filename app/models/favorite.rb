@@ -19,4 +19,9 @@ class Favorite < ApplicationRecord
       return "http://www.image-heberg.fr/files/1724751785995950683.png"
     end
   end
+
+  def last_four_photos
+    photos.first(5).pop
+    return photos
+  end
 end

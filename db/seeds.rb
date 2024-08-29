@@ -19,36 +19,36 @@ User.destroy_all
 user1 = User.create(user_name: "Allycious", first_name: "Halima", last_name: "Lamliji", email: "allycious.contact@gmail.com", password: "azerty", avatar: "https://www.festival-cinecomedies.com/wp-content/uploads/2022/09/Pinot-Simple-Flic-portrait-Jugnot.jpg")
 user2 = User.create(user_name: "pierrecrp", first_name: "Pierre", last_name: "Crepin", email: "pierrecrepin33200@gmail.com", password: "azerty", avatar: "https://cache.magicmaman.com/data/photo/w1000_ci/6w/lara-fabian1.jpg")
 user3 = User.create(user_name: "Leo", first_name: "Léo", last_name: "Turcat", email: "turcatleo@gmail.com", password: "azerty", avatar: "https://www.gala.fr/imgre/fit/~1~gal~2023~09~28~db6ef588-25cd-486f-8b0f-18e849519e0c.jpeg/3463x2616/quality/80/brad-pitt.jpeg")
-list1 = List.create(name: "Ma wishlist", public: true, user: user1)
-list2 = List.create(name: "My son's wishes", public: false, user: user2)
-list3 = List.create(name: "Mami's giftlist", public: false, user: user3)
-list4 = List.create(name: "Sneakers", public: false, user: user2)
+# list1 = List.create(name: "Ma wishlist", public: true, user: user1)
+# list2 = List.create(name: "My son's wishes", public: false, user: user2)
+# list3 = List.create(name: "Mami's giftlist", public: false, user: user3)
+# list4 = List.create(name: "Sneakers", public: false, user: user2)
 
-sources = ["Vinted", "Le Bon Coin"]
+# sources = ["Vinted", "Le Bon Coin"]
 
-20.times do
-  favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
-  price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user1, list: list1)
+# 20.times do
+#   favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
+#   price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user1, list: list1)
 
 
-end
+# end
 
-7.times do
-  favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
-  price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list2)
+# 7.times do
+#   favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
+#   price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list2)
 
-end
+# end
 
-7.times do
-  favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
-  price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user3, list: list3)
+# 7.times do
+#   favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
+#   price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user3, list: list3)
 
-end
+# end
 
-  7.times do
-    favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
-    price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list4)
-  end
+#   7.times do
+#     favorite = Favorite.create(name: Faker::Commerce.product_name, description: Faker::Commerce.department(max: 10),
+#     price: Faker::Commerce.price, size: "XS", source: sources.sample, user: user2, list: list4)
+#   end
 
 Follow.create(follower: user3, followed: user1)
 Follow.create(follower: user3, followed: user2)
