@@ -1,12 +1,13 @@
 <div class="row">
-<div class="container col-8 border-end border-weight-2">
+<div class="container col-8">
+<div class="user-container">
 
 <div class="d-flex justify-content-between p-3">
   <h2 class="mx-2 mb-3">Mes favoris</h2>
     <%= simple_form_for :search, url: favorites_path, method: :get, html: { class: 'search-form-control form-group d-flex flex-row' } do |f| %>
       <input class="form-control string required" type="text" name="search[query]" id="search_query" />
         <button name="button" type="submit" class="btn btn-nav">
-          <i class="fas fa-search"></i> Rechercher
+          <p class="search-placeholder"><i class="fas fa-search"></i></p>
         </button>
     <% end %>
 </div>
@@ -17,7 +18,13 @@
         <div class="card card-oui border-0 col-2 m-3 position-relative" style="width: 16rem;">
           <img class="card-img" src="https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="<%= favorite.name %>">
           <div class="p-3 d-flex flex-column flex-grow-1">
-            <h5 class="card-title"><%= favorite.name %></h5>
+            <div class="d-flex justify-content-between">
+            <h5 class="card-title"><%= truncate(favorite.name, length: 16) %></h5>
+            <%= image_tag favorite.source_url, class: "source-logo" %>
+            </div>
+
+
+
             <p class="flex-grow-1"><%= truncate(favorite.description, length: 60) %></p>
             <div class="d-flex justify-content-between align-items-center">
               <p class="mb-0" style="white-space: nowrap;">Prix: <%= favorite.price %> €</p>
@@ -41,8 +48,9 @@
   <% end %>
 </div>
 </div>
-
-<div class="container col-4 p-3">
+</div>
+<div class="container col-4">
+<div class="user-container p-3">
   <h2 class="mx-2 mb-3">Mes listes</h2>
 
  <%= link_to favorites_path do %>
@@ -66,5 +74,6 @@
   </div>
 
 
+</div>
 </div>
 </div>
