@@ -11,10 +11,16 @@
   border-top-left-radius: 10px;
 }
 
+.lists {
+  background-color: white;
+  border-radius: 10px;
+}
+
 .favorite-card {
   width: 10rem;
   border-radius: 10px;
   border: 0px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
 }
 
 .source-logo {
@@ -26,14 +32,15 @@
 .recent-favorites-container {
   background-color: white;
   border-radius: 10px ;
-  width: 450px;
-  height: 670px;
+  width: auto;
+  height: 783px;
   overflow: auto;
 }
 
 .card-recent-favorites {
   overflow: hidden;
   height: 98px;
+  width: 275px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
@@ -71,6 +78,7 @@
 .cards-activity {
   height: 450px;
   overflow: auto;
+  height: auto;
 }
 
 .profil-img {
@@ -117,6 +125,7 @@
   background-color: white;
   border-radius: 10px ;
   width: auto;
+  height: 629px;
 }
 
 .card-activity-infos p {

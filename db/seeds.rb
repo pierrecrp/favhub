@@ -9,9 +9,9 @@
 #   end
 require "faker"
 
+FavoriteTag.destroy_all
 Tag.destroy_all
 Favorite.destroy_all
-FavoriteTag.destroy_all
 List.destroy_all
 Follow.destroy_all
 User.destroy_all

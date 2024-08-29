@@ -11,24 +11,27 @@ class Scrapper
     if @favorite.source == "leboncoin"
       leboncoin_scrapper
     else
+      vinted_scrapper
     end
   end
 
   private
 
   def vinted_scrapper
-    document = Nokogiri::HTML(URI.open(@url))
+    document = Nokogiri::HTML(URI.open(@favorite.url))
     title = document.css("div[itemprop='name']").text.strip
     description = document.css("div[itemprop='description']").text.strip
     price = document.css("div[data-testid='item-price']").text.strip
     image_urls = document.css(".item-photos img").map { |img| img['src'] }
-    {
-      title: title,
-      description: description,
-      price: price,
-      image_urls: image_urls,
-      url: @url
-    }
+
+    @favorite.name = title
+    @favorite.description = description
+    @favorite.price = price.to_i
+    image_urls.each do |image|
+      file = URI.open(image)
+      @favorite.photos.attach(io: file, filename: @favorite.name, content_type: 'images/png')
+    end
+    @favorite.save
   end
 
   def leboncoin_scrapper
@@ -40,7 +43,7 @@ class Scrapper
       "Connection" => "keep-alive",
       "Upgrade-Insecure-Requests" => "1"
     }
-    response = HTTParty.get(@url, headers: headers)
+    response = HTTParty.get(@favorite.url, headers: headers)
     document = Nokogiri::HTML(response.body)
 
     title = document.css("h1[data-qa-id='adview_title']").text.strip
@@ -57,12 +60,14 @@ class Scrapper
     end
     unique_image_urls = image_urls.uniq
 
-    {
-      title: title,
-      description: description,
-      price: price,
-      image_urls: unique_image_urls,
-      url: @url
-    }
+    @favorite.name = title
+    @favorite.description = description
+    @favorite.price = price.to_i
+    image_urls.each do |image|
+      file = URI.open(image)
+      @favorite.photos.attach(io: file, filename: @favorite.name, content_type: 'images/png')
+    end
+
+    @favorite.save
   end
 end
