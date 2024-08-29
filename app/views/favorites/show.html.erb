@@ -32,6 +32,14 @@
       </div>
       <h5 class="card-show-title"><%= @favorite.name %></h5>
       <h6 class="card-subtitle mb-2"><%= @favorite.price %>€</h6>
+      <%= link_to @favorite.url, target: "_blank" do %>
+        <% if @favorite.source == "leboncoin" %>
+          Voir le favori sur LeBonCoin
+        <% else %>
+          Voir le favori sur Vinted
+        <% end %>
+      <i class="fa-solid fa-arrow-right"></i>
+      <% end %>
       <div class="description border-top mt-3">
         <h6 class="card-subtitle mb-2 mt-2">Description</h6>
         <p class="card-description"><%= @favorite.description %></p>
