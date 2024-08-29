@@ -74,26 +74,27 @@
         </div>
 
         <div class="icon-container d-flex flex-column gap-2 align-items-end">
-          <div class="profil-icons d-flex align-items-center justify-content-center">
+          <div class="profil-icons d-flex align-items-center justify-content-center ps-2">
+            <div class="profil-number"><%= @user.followeds.count %></div>
             <div class="profil-icon d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-user-group"></i>
             </div>
-            <div class="profil-number me-2"><%= @user.followeds.count %></div>
-
           </div>
-          <div class="profil-icons d-flex align-items-center justify-content-between">
+
+          <div class="profil-icons d-flex align-items-center justify-content-between ps-2">
+            <div class="profil-number"><%= @user.favorites.count %></div>
             <div class="profil-icon d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-star"></i>
             </div>
-            <div class="profil-number me-2"><%= @user.favorites.count %></div>
-
           </div>
-          <div class="profil-icons d-flex align-items-center justify-content-between">
+
+          <div class="profil-icons d-flex align-items-center justify-content-between ps-2">
+            <div class="profil-number"><%= @user.lists.count %></div>
             <div class="profil-icon d-flex justify-content-center align-items-center">
               <i class="fa-solid fa-list-ul"></i>
             </div>
-            <div class="profil-number me-2"><%= @user.lists.count %></div>
           </div>
+
         </div>
       </div>
     </div>
@@ -106,7 +107,7 @@
             <div class="card-activity d-flex justify-content-between align-items-center mb-2 px-3 pt-2 border-top">
               <div class="card-activity-infos d-flex align-items-center">
                 <img class="avatar avatar-feed" src="<%= favorite.user.avatar %>" alt="Avatar">
-                <p class="px-2 pt-3"><strong>@<%= favorite.user.user_name %></strong> a ajouté
+                <p class="px-2 pt-3"><strong><%= link_to favorite.user.user_name, user_path(favorite.user) %></strong> a ajouté
                   <em><%= link_to favorite_path(favorite), style: "color: #EB4511" do %>
                     <%= favorite.name %>
                   </em></p>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_27_123138) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_28_104743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,15 +40,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_27_123138) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
-  end
-
-  create_table "activities", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "favorite_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["favorite_id"], name: "index_activities_on_favorite_id"
-    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "favorite_tags", force: :cascade do |t|
@@ -114,14 +105,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_27_123138) do
     t.string "first_name"
     t.string "last_name"
     t.string "avatar"
+    t.string "authentication_token", limit: 30
+    t.index ["authentication_token"], name: "index_users_on_authentication_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "activities", "favorites"
-  add_foreign_key "activities", "users"
   add_foreign_key "favorite_tags", "favorites"
   add_foreign_key "favorite_tags", "tags"
   add_foreign_key "favorites", "lists"
