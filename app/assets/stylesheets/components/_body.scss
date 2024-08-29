@@ -4,9 +4,13 @@ body {
 }
 
 a {
+  color: $fhub-color;
   text-decoration: none;
 }
 
+a:hover {
+  color: #c73306;
+}
 .landing-bg {
   background-color: white;
 }
