@@ -3,6 +3,7 @@ class FavoritesController < ApplicationController
   before_action :set_favorite, only: %i[show update destroy]
   before_action :set_tags, only: %i[index show]
 
+  
   def index
     @favorites = Favorite.where(user: current_user)
     @lists = List.where(user: current_user)
@@ -21,11 +22,9 @@ class FavoritesController < ApplicationController
   end
 
   def show
-    # debugger
     @favorite = Favorite.find(params[:id])
     @favorite_tag = FavoriteTag.new
     @tag = Tag.new
-    # debugger
 
     # respond_to do |format|
     #   format.html

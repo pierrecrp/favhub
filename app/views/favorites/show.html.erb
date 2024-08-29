@@ -27,7 +27,7 @@
       </div>
       
       
-        <div data-controller="submit-on-click"class="border-top mt-3">
+        <div data-controller="submit-on-click"class="border-top mt-3 mb-3">
           <%= simple_form_for [@favorite, @favorite_tag], html: { data: { controller: "submit-on-click", action: "change->submit-on-click#submitForm", "submit-on-click-target": "form" } } do |f| %>
           <% if current_user.tags.present? %>
             <div class="tags-form-container d-flex align-items-center mt-2">

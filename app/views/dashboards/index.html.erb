@@ -2,11 +2,11 @@
 
 <div class="main-container d-flex p-3">
 
-  <div class="lists-container d-flex flex-column m-4">
+  <div class="lists-container d-flex flex-column mx-3 my-3">
   <% @lists.last(2).each do |list| %>
-    <div class="lists">
+    <div class="lists px-4 py-3 mb-4">
       <div class="list-header d-flex justify-content-between align-items-center mt-2">
-        <h4><%= list.name %></h4>
+        <h5 class="list-name"><%= list.name %></h5>
         <%= link_to favorites_path(list_id: list.id), class: "btn-text-only" do %>
           Voir la liste
           <i class="fa-solid fa-arrow-right"></i>
@@ -15,7 +15,7 @@
       <div class="favorites-card d-flex gap-3 my-3">
         <% list.favorites.last(3).each do |favorite| %>
           <div class="card favorite-card">
-            <img class="card-img-top" src="https://images1.vinted.net/t/03_01564_TXYRanSYDWD51tfGuBtZAb3g/f800/1724432311.jpeg?s=d3f0e914256f111bc1df96f47aa04c2ffdd36fc2" alt="">
+            <img class="card-img-top" src="https://www.befunky.com/images/wp/wp-2018-06-replace-color-red-shoe-before-scaled-e1651175374654.jpeg?auto=avif,webp&format=jpg&width=944" alt="">
             <div class="card-body">
               <div class="card-body-main d-flex justify-content-between">
                 <h6 class="card-title"><%= truncate(favorite.name, length: 25) %></h6>
@@ -32,9 +32,9 @@
 </div>
 
 
-  <div class="recent-favorites-container m-3 p-3">
+  <div class="recent-favorites-container m-3 p-2">
     <div class="favorites-header d-flex justify-content-between align-items-center m-3">
-      <h4>Récemment ajoutés</h4>
+      <h5>Récemment ajoutés</h5>
       <%= link_to favorites_path, class: "btn-text-only" do %>
         Voir tous
         <i class="fa-solid fa-arrow-right"></i>
@@ -43,8 +43,8 @@
     <div class="recent-favorites-cards d-flex flex-column m-3 gap-3">
       <% @favorites.last(6).each do |favorite| %>
         <%= link_to favorite_path(favorite), class: "card-favorite-link" do %>
-          <div class="card-recent-favorites d-flex align-items-center p-2">
-            <img src="https://www.letempledujeu.fr/IMG/arton12960.jpg?1670239449" />
+          <div class="card-recent-favorites d-flex align-items-center p-2 me-2">
+            <img src="https://img.freepik.com/photos-gratuite/image-maquette-bouteille-produit-beaute-photo-gratuite-arriere-plan_1340-31281.jpg?size=626&ext=jpg&ga=GA1.1.1826414947.1723680000&semt=ais_hybrid" />
             <div class="card-favorites-recent-infos">
               <h6><%= truncate(favorite.name, length: 25) %></h6>
               <p><%= number_to_currency(favorite.price, unit: "€") %></p>
@@ -100,12 +100,12 @@
     </div>
 
     <div class="feed-container d-flex flex-column mt-3">
-      <h5 class="feed-title p-3">Activité de vos amis</h5>
+      <h5 class="feed-title pt-4 pb-3 px-4">Activité de vos amis</h5>
       <div class="cards-activity">
         <% if @following_favorites.present? && @following_favorites.any? %>
           <% @following_favorites.each do |favorite| %>
             <div class="card-activity d-flex justify-content-between align-items-center mb-2 px-3 pt-2 border-top">
-              <div class="card-activity-infos d-flex align-items-center">
+              <div class="card-activity-infos d-flex align-items-center ps-2">
                 <img class="avatar avatar-feed" src="<%= favorite.user.avatar %>" alt="Avatar">
                 <p class="px-2 pt-3"><strong><%= link_to favorite.user.user_name, user_path(favorite.user) %></strong> a ajouté
                   <em><%= link_to favorite_path(favorite), style: "color: #EB4511" do %>
