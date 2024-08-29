@@ -19,7 +19,7 @@
             <div class="card-body">
               <div class="card-body-main d-flex justify-content-between">
                 <h6 class="card-title"><%= truncate(favorite.name, length: 25) %></h6>
-                <img class="source-logo" src="https://cdn.brandfetch.io/idFLvfRPd0/w/800/h/800/theme/dark/icon.jpeg?k=id64Mup7ac&t=1721841761912?t=1721841761912" alt="source-logo">
+                <%= image_tag favorite.source_url, class: "source-logo" %>
               </div>
               <p class="card-text"><%= number_to_currency(favorite.price, unit: "€") %></p>
               <%= link_to "Voir le favori", favorite_path(favorite), class: "btn btn-secondary py-1 px-3 me-3" %>
