@@ -43,7 +43,6 @@ class Scrapper
       "Connection" => "keep-alive",
       "Upgrade-Insecure-Requests" => "1"
     }
-    debugger
     response = HTTParty.get(@favorite.url, headers: headers)
     document = Nokogiri::HTML(response.body)
 
