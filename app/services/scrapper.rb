@@ -35,7 +35,19 @@ class Scrapper
   end
 
   def leboncoin_scrapper
-    headers = {
+    # headers = {
+    #   "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",
+    #   "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+    #   "Accept-Language": "en-US,en;q=0.5",
+    #   "Accept-Encoding": "gzip, deflate, br",
+    #   "Connection": "keep-alive",
+    #   "Upgrade-Insecure-Requests": "1",
+    #   "Referer": "https://www.leboncoin.fr/",
+    #   "DNT": "1",
+    #   "TE": "Trailers"
+    # }
+    # 
+     headers = {
       "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36",
       "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
       "Accept-Language": "en-US,en;q=0.5",
@@ -44,11 +56,14 @@ class Scrapper
       "Upgrade-Insecure-Requests": "1",
       "Referer": "https://www.leboncoin.fr/",
       "DNT": "1",
-      "TE": "Trailers"
+      "TE": "Trailers",
+      "proxy": "http://localhost:5000"
     }
-  
+    puts "ici c'est http"
     response = HTTParty.get(@favorite.url, headers: headers)
     sleep(1)
+    
+    puts "ici c'est nokogiri"
     puts response
     document = Nokogiri::HTML(response.body)
     puts document
