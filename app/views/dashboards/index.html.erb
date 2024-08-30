@@ -47,7 +47,7 @@
             <% if favorite.photos.attached? %>
               <%= cl_image_tag favorite.photos.first.key %>
             <% else %>
-              <%= image_tag "logo-favhub" %>
+              <%= image_tag "https://asset.cloudinary.com/dvrr4em0n/a72430b5876f12e1af25512e46350ef8" %>
             <% end %>
             <div class="card-favorites-recent-infos">
               <h6><%= truncate(favorite.name, length: 25) %></h6>
