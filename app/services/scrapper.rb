@@ -48,6 +48,7 @@ class Scrapper
     }
   
     response = HTTParty.get(@favorite.url, headers: headers)
+    sleep(1)
     puts response
     document = Nokogiri::HTML(response.body)
     puts document
