@@ -44,7 +44,9 @@ class Scrapper
       "Upgrade-Insecure-Requests" => "1"
     }
     response = HTTParty.get(@favorite.url, headers: headers)
+    puts response
     document = Nokogiri::HTML(response.body)
+    puts document
 
     title = document.css("h1[data-qa-id='adview_title']").text.strip
     description = document.css("div[data-qa-id='adview_description_container']").text.strip
