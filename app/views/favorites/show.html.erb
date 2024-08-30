@@ -4,7 +4,7 @@
     <% if @favorite.photos&.first.present? %>
       <%= cl_image_tag @favorite.photos&.first.key, class: 'image-favoris-show-main'%>
     <% else %>
-      <%= image_tag "logo-favhub.png", class: 'image-favoris-show-main' %>
+      <%= image_tag "https://res.cloudinary.com/dvrr4em0n/image/upload/v1725003969/logo-favhub_u39lls.png", class: 'image-favoris-show-main' %>
     <% end %>
     <div class="grid-img-favoris gap-1 w-100">
       <%#= cl_image_tag @favorite.photo.key, height: 300, width: 400, crop: :fill %>
@@ -14,7 +14,7 @@
         <% end %>
       <% else %>
         <% 4.times do %>
-          <%= image_tag "logo-favhub.png", class: 'image-favoris-show' %>
+          <%= image_tag "https://res.cloudinary.com/dvrr4em0n/image/upload/v1725003969/logo-favhub_u39lls.png", class: 'image-favoris-show' %>
         <% end %>
       <% end %>
     </div>
