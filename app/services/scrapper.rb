@@ -57,13 +57,15 @@ class Scrapper
       "Referer": "https://www.leboncoin.fr/",
       "DNT": "1",
       "TE": "Trailers",
-      "proxy": "http://localhost:5000"
+      "proxy": "http://localhost:5000",
+      "homepage": "."
     }
+    
     puts "ici c'est http"
     response = HTTParty.get(@favorite.url, headers: headers)
     sleep(1)
     puts response
-    
+
     puts "ici c'est nokogiri"
     document = Nokogiri::HTML(response.body)
     puts document
