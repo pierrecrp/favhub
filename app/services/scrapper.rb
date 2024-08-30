@@ -62,9 +62,9 @@ class Scrapper
     puts "ici c'est http"
     response = HTTParty.get(@favorite.url, headers: headers)
     sleep(1)
+    puts response
     
     puts "ici c'est nokogiri"
-    puts response
     document = Nokogiri::HTML(response.body)
     puts document
 
